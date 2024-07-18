@@ -15,4 +15,9 @@ def get_best_match(user_question: str, questions: dict) -> str | None:
     if knowledge_matches:
         return knowledge_matches[0]
 
+def get_response(message: str, knowledge: dict) -> str:
+    best_match: str | None = get_best_match(message, knowledge)
+
+    if best_match and (answer := knowledge.get(best_match)):
+        return answer
 
