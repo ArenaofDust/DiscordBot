@@ -10,7 +10,9 @@ client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 def get_best_match(user_question: str, questions: dict) -> str | None:
     questions: list[str] = [q for q in questions]
-    matches: list = get_close_matches(user_question, questions, n=1, cutoff=0.6)
+    knowledge_matches: list = get_close_matches(user_question, questions, n=1, cutoff=0.6)
 
-    if matches:
-        return matches[0]
+    if knowledge_matches:
+        return knowledge_matches[0]
+
+
